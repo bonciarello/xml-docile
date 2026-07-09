@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Docile — Validatore XML gratuito con spiegazioni in italiano</title>
+  <meta name="description" content="Valida file XML online: incolla o trascina il tuo XML e ottieni subito errori spiegati in italiano semplice, con suggerimenti di correzione. Perfetto per principianti.">
+  <link rel="canonical" href="https://cristianporco.it/app/xml-docile/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A6B8A'/><text x='16' y='23' text-anchor='middle' font-size='20' font-family='serif' fill='white'>&lt;/&gt;</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="XML Docile — Validatore XML con spiegazioni in italiano">
+  <meta property="og:description" content="Valida file XML online con spiegazioni chiare in italiano. Errori spiegati riga per riga con suggerimenti di correzione. Gratuito, senza registrazione.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cristianporco.it/app/xml-docile/">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- JSON-LD Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "XML Docile",
+    "description": "Validatore di file XML con spiegazioni in italiano per principianti",
+    "url": "https://cristianporco.it/app/xml-docile/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "inLanguage": "it"
+  }
+  </script>
+
+  <base href="./">
+
+  <!-- Font: system stack with distinctive serif -->
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="./" class="logo" aria-label="XML Docile — Torna alla home">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">XML Docile</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      <p class="header-tagline">Validatore XML • Spiegazioni in italiano • Per principianti</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="app-main" role="main">
+    <!-- Input panel -->
+    <section class="panel panel-input" aria-labelledby="input-heading">
+      <div class="panel-header">
+        <h1 class="panel-title" id="input-heading">Inserisci il tuo XML</h1>
+        <div class="panel-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-clear" title="Pulisci tutto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            Pulisci
+          </button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-sample" title="Carica un esempio">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            Esempio
+          </button>
+        </div>
+      </div>
+
+      <!-- Drag & drop zone -->
+      <div class="drop-zone" id="drop-zone" role="region" aria-label="Zona di caricamento file XML">
+        <svg class="drop-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <p class="drop-text">
+          <strong>Trascina qui il tuo file XML</strong><br>
+          <span class="drop-sub">oppure incolla il testo nell'area sottostante</span>
+        </p>
+        <input type="file" id="file-input" accept=".xml,.txt,text/xml,application/xml" class="sr-only" aria-label="Seleziona file XML">
+      </div>
+
+      <!-- XML textarea -->
+      <div class="input-area">
+        <label for="xml-input" class="sr-only">Testo XML da validare</label>
+        <textarea
+          id="xml-input"
+          class="code-input"
+          placeholder="Incolla qui il tuo XML..."
+          rows="14"
+          spellcheck="false"
+          aria-describedby="xml-input-hint"
+        ></textarea>
+        <div id="xml-input-hint" class="sr-only">Inserisci o trascina un documento XML. Premi Valida per controllare la sintassi.</div>
+        <div class="input-footer">
+          <span class="char-count" id="char-count" aria-live="polite">0 caratteri</span>
+        </div>
+      </div>
+
+      <!-- DTD section (optional) -->
+      <details class="dtd-section" id="dtd-section">
+        <summary class="dtd-summary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Validazione DTD <em>(opzionale)</em></span>
+        </summary>
+        <div class="dtd-content">
+          <p class="dtd-hint">Incolla una DTD per verificare che i tag usati nell'XML siano tutti dichiarati. La DTD definisce quali tag e attributi sono ammessi.</p>
+          <label for="dtd-input" class="sr-only">Testo DTD (opzionale)</label>
+          <textarea
+            id="dtd-input"
+            class="code-input code-input--dtd"
+            placeholder="&lt;!ELEMENT libro (titolo, autore, anno)&gt;&#10;&lt;!ELEMENT titolo (#PCDATA)&gt;&#10;&lt;!ELEMENT autore (#PCDATA)&gt;&#10;&lt;!ELEMENT anno (#PCDATA)&gt;"
+            rows="6"
+            spellcheck="false"
+          ></textarea>
+        </div>
+      </details>
+
+      <!-- Valida button -->
+      <button type="button" class="btn btn-primary btn-validate" id="btn-validate">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Valida
+      </button>
+    </section>
+
+    <!-- Results panel -->
+    <section class="panel panel-results" id="results-panel" aria-labelledby="results-heading" hidden>
+      <div class="panel-header">
+        <h2 class="panel-title" id="results-heading">Risultati</h2>
+      </div>
+
+      <!-- Status badge -->
+      <div class="status-area" id="status-area" aria-live="polite"></div>
+
+      <!-- Error list -->
+      <div class="errors-section" id="errors-section" hidden>
+        <h3 class="errors-heading">Errori trovati</h3>
+        <ul class="error-list" id="error-list"></ul>
+      </div>
+
+      <!-- Warnings list -->
+      <div class="warnings-section" id="warnings-section" hidden>
+        <h3 class="warnings-heading">Avvisi</h3>
+        <ul class="warning-list" id="warning-list"></ul>
+      </div>
+
+      <!-- Structure preview (valid XML) -->
+      <div class="structure-section" id="structure-section" hidden>
+        <h3 class="structure-heading">Struttura del documento</h3>
+        <div class="structure-stats" id="structure-stats"></div>
+        <div class="structure-tree" id="structure-tree" role="tree" aria-label="Struttura ad albero dell'XML"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>XML Docile — Elaborazione locale, nessun dato inviato a server esterni. &copy; 2026</p>
+  </footer>
+
+  <script src="static/js/app.js"></script>
+</body>
+</html>
